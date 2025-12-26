@@ -3,317 +3,276 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Quiro — Revolutionize Your University</title>
-  <link rel="icon" href="images/about-hero.jpg" type="image/jpeg" />
-  <meta name="description" content="Quiro: Transform Nigerian universities with automated admissions, JAMB/NYSC integration, LMS, and role-based access. 65% admin time savings." />
+  <title>Quiro: Transforming African Higher Education</title>
+  <meta name="description" content="Modern university management platform for Nigerian institutions. Automate operations, ensure compliance, revolutionize education." />
   <meta name="theme-color" content="#000000" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Quiro — Revolutionize Your University" />
-  <meta property="og:description" content="Automate admissions, ensure JAMB/NYSC compliance, and save 65% admin time." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://yourplatform.com" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600&auto=format&fit=crop" />
-
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Quiro",
-    "description": "University management solution for Nigerian universities with JAMB/NYSC integration",
-    "applicationCategory": "EducationalApplication",
-    "operatingSystem": "Web",
-    "offers": {
-      "@type": "Offer",
-      "price": "200000",
-      "priceCurrency": "NGN"
-    }
-  }
-  </script>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            quBlack: '#000000',
-            quEmerald: '#10B981',
-            quBlue: '#1E3A8A',
-            quGold: '#F59E0B',
-            quGray: '#6B7280'
+          fontFamily: { 
+            sans: ['Inter', 'system-ui', 'sans-serif'] 
           },
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'glow': 'glow 2s ease-in-out infinite alternate',
-            'slide-up': 'slideUp 0.5s ease-out',
-            'fade-in': 'fadeIn 0.6s ease-out'
-          }
         }
       }
     }
   </script>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-
-  <!-- Particles.js -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
-
-  <!-- Preload key image -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600&auto=format&fit=crop" />
-
   <style>
-    :root {
-      --bg-primary: #000000;
-      --bg-secondary: #0b0b0b;
-      --text-primary: #FFFFFF;
-      --text-secondary: rgba(255, 255, 255, 0.7);
-      --accent-emerald: #10B981;
-      --accent-blue: #1E3A8A;
-      --accent-gold: #F59E0B;
-      --border-color: rgba(255, 255, 255, 0.1);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --glass-bg: rgba(255, 255, 255, 0.1);
-      --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { 
-      scroll-behavior: smooth; 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Subtle transitions */
+    body, .card, a, button {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Minimalist card */
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
       transition: all 0.3s ease;
     }
-    
-    body { 
-      background: var(--bg-primary); 
-      color: var(--text-primary); 
-      font-family: Inter, ui-sans-serif, system-ui;
-      transition: all 0.3s ease;
+
+    .dark .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
     }
 
-
-    /* Glassmorphism Effects */
-    .glass {
-      background: var(--glass-bg);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-color);
+    .card:hover {
+      border-color: #10B981;
+      transform: translateY(-2px);
     }
 
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    .dark .card:hover {
+      border-color: #10B981;
     }
 
-    /* Mist-like gradient animation */
-    .mist {
-      position: absolute; 
-      inset: 0; 
-      pointer-events: none;
-      background: radial-gradient(60% 60% at 20% 30%, rgba(16,185,129,.25), rgba(16,185,129,0) 60%),
-                  radial-gradient(50% 50% at 80% 70%, rgba(30,58,138,.25), rgba(30,58,138,0) 60%);
-      opacity: .35; 
-      animation: mistPulse 6s ease-in-out infinite alternate;
-      mix-blend-mode: screen;
-    }
-
-
-    @keyframes mistPulse {
-      0% { opacity: .25; filter: blur(14px); }
-      100% { opacity: .5; filter: blur(22px); }
-    }
-
-    /* Enhanced card hover effects */
-    .card-mist {
-      background: linear-gradient(90deg, rgba(16,185,129,0), rgba(30,58,138,0));
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Clean nav link */
+    .nav-link {
       position: relative;
-      overflow: hidden;
+      color: #6b7280;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
     }
 
-    .card-mist::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.6s ease;
+    .dark .nav-link {
+      color: #9ca3af;
     }
 
-    .card-mist:hover {
-      background: linear-gradient(90deg, rgba(16,185,129,.22), rgba(30,58,138,.22));
-      transform: translateY(-8px) scale(1.02);
-      border-color: var(--accent-emerald);
-      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+    .nav-link:hover {
+      color: #000;
     }
 
-    .card-mist:hover::before {
-      left: 100%;
+    .dark .nav-link:hover {
+      color: #fff;
     }
 
-    /* Enhanced input glow */
-    .glow-input:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(16,185,129,.35), 0 0 18px rgba(30,58,138,.45);
-      border-color: var(--accent-emerald);
-      transition: all 0.3s ease;
-      transform: scale(1.02);
+    /* Accent color */
+    .accent {
+      color: #10B981;
     }
 
-    /* Loading skeleton */
-    .skeleton {
-      background: linear-gradient(90deg, var(--card-bg) 25%, var(--border-color) 50%, var(--card-bg) 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
+    /* Subtle gradient */
+    .gradient-subtle {
+      background: linear-gradient(180deg, #fff 0%, #f9fafb 100%);
     }
 
-    @keyframes loading {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+    .dark .gradient-subtle {
+      background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
     }
 
-    /* Enhanced animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    /* Typography */
+    .headline {
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
     }
 
-    @keyframes glow {
-      0% { box-shadow: 0 0 5px var(--accent-emerald); }
-      100% { box-shadow: 0 0 20px var(--accent-emerald), 0 0 30px var(--accent-emerald); }
+    .subhead {
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.6;
+      color: #6b7280;
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .dark .subhead {
+      color: #9ca3af;
     }
 
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.875rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .dark .badge {
+      border-color: #2a2a2a;
+    }
+
+    /* Button */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      letter-spacing: -0.01em;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+      border: 1px solid #000;
+    }
+
+    .dark .btn-primary {
+      background: #fff;
+      color: #000;
+      border: 1px solid #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+    }
+
+    .dark .btn-primary:hover {
+      background: #e5e7eb;
+      border-color: #e5e7eb;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #000;
+      border: 1px solid #e5e7eb;
+    }
+
+    .dark .btn-secondary {
+      color: #fff;
+      border-color: #2a2a2a;
+    }
+
+    .btn-secondary:hover {
+      border-color: #000;
+    }
+
+    .dark .btn-secondary:hover {
+      border-color: #fff;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    .dark .divider {
+      background: #2a2a2a;
+    }
+
+    /* Number animation */
+    .counter {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Grid lines */
+    .grid-lines {
+      background-image: 
+        linear-gradient(to right, #f3f4f6 1px, transparent 1px),
+        linear-gradient(to bottom, #f3f4f6 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .dark .grid-lines {
+      background-image: 
+        linear-gradient(to right, #1a1a1a 1px, transparent 1px),
+        linear-gradient(to bottom, #1a1a1a 1px, transparent 1px);
+    }
+
+    /* Fade in animation */
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    /* Carousel transitions */
-    .fade-enter { opacity: 0; transform: translateY(8px); }
-    .fade-enter-active { opacity: 1; transform: translateY(0); transition: all .5s ease; }
-    .fade-exit { opacity: 1; transform: translateY(0); }
-    .fade-exit-active { opacity: 0; transform: translateY(-8px); transition: all .5s ease; }
-
-    /* Coming Soon badge styling */
-    @keyframes glowFade {
-      0% { opacity: .35; transform: scale(.98); box-shadow: 0 0 12px rgba(16,185,129,.18), 0 0 0 0 rgba(30,58,138,.0); }
-      50% { opacity: 1; transform: scale(1.06); box-shadow: 0 0 26px rgba(16,185,129,.35), 0 0 60px rgba(30,58,138,.25); }
-      100% { opacity: .35; transform: scale(.98); box-shadow: 0 0 12px rgba(16,185,129,.18), 0 0 0 0 rgba(30,58,138,.0); }
-    }
-
-    .coming-soon {
-      display: inline-flex; 
-      align-items: center; 
-      gap: .5rem;
-      padding: .9rem 1.25rem; 
-      border-radius: 9999px;
-      border: 1px solid var(--border-color);
-      background: linear-gradient(90deg, rgba(16,185,129,.12), rgba(30,58,138,.12));
-      color: var(--text-primary); 
-      letter-spacing: .06em; 
-      font-weight: 800;
-      font-size: 1.05rem;
-      animation: glowFade 2.6s ease-in-out infinite;
-      backdrop-filter: blur(6px);
-    }
-
-    .coming-dot { 
-      width: .5rem; 
-      height: .5rem; 
-      border-radius: 9999px; 
-      background: var(--accent-emerald); 
-      box-shadow: 0 0 14px rgba(16,185,129,.8); 
-    }
-
-    .coming-soon--lg { 
-      font-size: 1.4rem; 
-      padding: 1.1rem 1.6rem; 
-    }
-
-    @media (min-width: 768px) { 
-      .coming-soon--lg { 
-        font-size: 1.6rem; 
-        padding: 1.2rem 1.8rem; 
-      } 
-    }
-
-    /* Typing effect */
-    .typing { 
-      display: inline-block; 
-      overflow: hidden; 
-      white-space: nowrap; 
-      border-right: 2px solid var(--text-primary); 
-      animation: typingCycle 5s steps(var(--chars, 11)) 0s infinite; 
-    }
-
-    @keyframes typingCycle {
-      0% { width: 0; opacity: 1; border-right-color: var(--text-primary); }
-      65% { width: calc(var(--chars, 11) * 1ch); opacity: 1; border-right-color: var(--text-primary); }
-      70% { width: calc(var(--chars, 11) * 1ch); opacity: 1; }
-      75% { width: calc(var(--chars, 11) * 1ch); opacity: 0; }
-      95% { width: 0; opacity: 0; }
-      100% { width: 0; opacity: 1; }
-    }
-
-    .coming-cycle { 
-      animation: badgeCycle 5s linear infinite; 
-      display: inline-flex; 
-    }
-
-    @keyframes badgeCycle {
-      0% { opacity: 1; visibility: visible; }
-      70% { opacity: 1; visibility: visible; }
-      80% { opacity: 0; visibility: hidden; }
-      95% { opacity: 0; visibility: hidden; }
-      100% { opacity: 1; visibility: visible; }
-    }
-
-    /* Progress bars */
-    .progress-bar {
-      height: 4px;
-      background: var(--card-bg);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-emerald), var(--accent-blue));
-      border-radius: 2px;
-      transition: width 0.3s ease;
-    }
-
-    /* Mobile optimizations */
-    @media (max-width: 768px) {
-      .card-mist:hover {
-        transform: translateY(-4px) scale(1.01);
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {
-      :root {
-        --border-color: rgba(255, 255, 255, 0.3);
-        --card-bg: rgba(255, 255, 255, 0.1);
-      }
+    .fade-in {
+      animation: fadeIn 0.6s ease-out forwards;
     }
 
-    /* Reduced motion support */
+    /* Module transition */
+    .module-content {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .module-content.hiding {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d1d5db;
+      border-radius: 4px;
+    }
+
+    .dark ::-webkit-scrollbar-thumb {
+      background: #3a3a3a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #9ca3af;
+    }
+
+    .dark ::-webkit-scrollbar-thumb:hover {
+      background: #4a4a4a;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -322,876 +281,692 @@
       }
     }
   </style>
-  <!-- Analytics (optional) -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> -->
 </head>
-<body>
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-black/90 backdrop-blur border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#hero" class="text-xl font-extrabold hover:scale-105 transition-transform">
-        <span class="text-white">Qui</span><span class="text-quEmerald">ro</span>
-      </a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#features" class="hover:text-quEmerald transition">Features</a>
-        <a href="#benefits" class="hover:text-quEmerald transition">Benefits</a>
-        <a href="#team" class="hover:text-quEmerald transition">Team</a>
-        <a href="pricing.html" class="hover:text-quEmerald transition">Pricing</a>
-        <a href="#cta" class="px-4 py-2 rounded-md bg-quEmerald text-black font-semibold hover:bg-emerald-500 transition">Request Info</a>
-      </nav>
-      <button id="mobile-menu-btn" class="md:hidden w-10 h-10 inline-flex items-center justify-center rounded-md border border-white/15 bg-white/5 text-white hover:bg-white/10" aria-label="Open menu" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-    </div>
-    <!-- Mobile menu -->
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/10 glass">
-      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
-        <a href="#features" class="hover:text-quEmerald transition">Features</a>
-        <a href="#benefits" class="hover:text-quEmerald transition">Benefits</a>
-        <a href="#team" class="hover:text-quEmerald transition">Team</a>
-        <a href="#modules" class="hover:text-quEmerald transition">Modules</a>
-        <a href="pricing.html" class="hover:text-quEmerald transition">Pricing</a>
-        <a href="#cta" class="inline-flex items-center justify-center px-4 py-2 rounded-md bg-quEmerald text-black font-semibold hover:bg-emerald-500 transition w-full">Request Info</a>
-      </div>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
-    <img src="images/about-hero.jpg"
-         alt="Nigerian university campus"
-         class="absolute inset-0 w-full h-full object-cover opacity-40 transition-opacity duration-500"
-         onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=2000&auto=format&fit=crop';" />
-    <div class="mist" aria-hidden="true"></div>
-    <div id="particles-hero" class="absolute inset-0" aria-hidden="true"></div>
-
-    <!-- Floating geometric shapes -->
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute top-20 left-10 w-4 h-4 bg-quEmerald/30 rounded-full animate-float"></div>
-      <div class="absolute top-40 right-20 w-6 h-6 bg-quBlue/30 rounded-full animate-float" style="animation-delay: 1s;"></div>
-      <div class="absolute bottom-40 left-20 w-3 h-3 bg-quGold/30 rounded-full animate-float" style="animation-delay: 2s;"></div>
-      <div class="absolute bottom-20 right-10 w-5 h-5 bg-quEmerald/20 rounded-full animate-float" style="animation-delay: 3s;"></div>
-    </div>
-
-    <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-      <h1 id="hero-title" class="text-4xl md:text-6xl font-extrabold leading-tight opacity-0 flex items-center justify-center gap-3">
-        <span class="bg-gradient-to-r from-quEmerald to-quBlue bg-clip-text text-transparent">
-          Revolutionize Your University with Quiro
-        </span>
-      </h1>
-      <p id="hero-sub" class="mt-4 text-lg md:text-2xl text-white/90 opacity-0">
-        65% Time Savings, Seamless JAMB/NYSC Compliance
-      </p>
-      
-      <!-- ROI Calculator Preview -->
-      <div class="mt-6 opacity-0 glass-card rounded-xl p-4 max-w-md mx-auto" id="roi-preview">
-        <div class="flex items-center justify-between text-sm">
-          <span class="text-white/70">Potential Annual Savings:</span>
-          <span class="text-quEmerald font-bold text-lg">₦7.9M</span>
-        </div>
-        <div class="progress-bar mt-2">
-          <div class="progress-fill" style="width: 65%"></div>
-        </div>
-      </div>
-
-      <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center opacity-0" id="hero-cta">
-        <a href="#cta"
-           class="inline-flex items-center justify-center px-6 py-3 rounded-md bg-quEmerald text-black font-semibold hover:bg-emerald-500 transition hover:scale-105 hover:shadow-lg">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-          </svg>
-          Request Info
+<body class="bg-white dark:bg-black text-gray-900 dark:text-gray-100">
+  
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="flex items-center justify-between h-16">
+        <a href="#hero" class="flex items-center gap-2">
+          <span class="text-xl font-semibold tracking-tight">
+            <span class="text-gray-900 dark:text-white">Qui</span><span class="text-emerald-500">ro</span>
+          </span>
         </a>
-        <a href="#features"
-           class="inline-flex items-center justify-center px-6 py-3 rounded-md border border-white/20 hover:border-white/40 transition hover:scale-105 glass">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#features" class="nav-link">Features</a>
+          <a href="#modules" class="nav-link">Modules</a>
+          <a href="#impact" class="nav-link">Impact</a>
+          <a href="#team" class="nav-link">Team</a>
+          <a href="pricing.html" class="nav-link">Pricing</a>
+          <button id="theme-toggle" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg">
+            <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+          </button>
+          <a href="#contact" class="btn btn-primary">
+            Get Started
+          </a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
-          Explore Features
-        </a>
+        </button>
       </div>
-      <div class="mt-6 text-white/70 text-sm opacity-0" id="hero-note">
-        Premium, compliant, and mobile-first for Nigerian universities.
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-900">
+      <div class="px-6 py-4 space-y-4">
+        <a href="#features" class="block nav-link">Features</a>
+        <a href="#modules" class="block nav-link">Modules</a>
+        <a href="#impact" class="block nav-link">Impact</a>
+        <a href="#team" class="block nav-link">Team</a>
+        <a href="pricing.html" class="block nav-link">Pricing</a>
+        <a href="#contact" class="btn btn-primary w-full">Get Started</a>
       </div>
-      <div class="mt-8 opacity-0" id="hero-coming">
-        <span class="coming-soon coming-soon--lg coming-cycle" aria-label="Coming Soon">
-          <span class="coming-dot"></span>
-          <span class="typing" style="--chars: 12">Coming Soon</span>
-        </span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="pt-32 pb-20 px-6 lg:px-12 min-h-screen flex items-center">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="max-w-4xl">
+        <div class="badge mb-8 fade-in">
+          <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+          Coming Soon
+        </div>
+
+        <h1 class="headline text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-6 fade-in" style="animation-delay: 0.1s;">
+          Transforming African<br />Higher Education
+        </h1>
+
+        <p class="subhead text-xl md:text-2xl mb-10 max-w-2xl fade-in" style="animation-delay: 0.2s;">
+          Taking first step in Nigeria. Modern university management platform that automates operations, ensures JAMB/NYSC compliance, and revolutionizes the student experience.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-16 fade-in" style="animation-delay: 0.3s;">
+          <a href="#contact" class="btn btn-primary">Request Demo</a>
+          <a href="#features" class="btn btn-secondary">Explore Platform</a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-in" style="animation-delay: 0.4s;">
+          <div>
+            <div class="text-3xl font-semibold mb-1 counter" data-target="65">0</div>
+            <div class="text-sm subhead">Time Saved</div>
+          </div>
+          <div>
+            <div class="text-3xl font-semibold mb-1">100%</div>
+            <div class="text-sm subhead">Compliant</div>
+          </div>
+          <div>
+            <div class="text-3xl font-semibold mb-1">24/7</div>
+            <div class="text-sm subhead">Access</div>
+          </div>
+          <div>
+            <div class="text-3xl font-semibold mb-1">3.5x</div>
+            <div class="text-sm subhead">ROI</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section id="features" class="relative py-20" style="background: var(--bg-secondary);">
-    <div class="mist" aria-hidden="true" style="opacity:.18"></div>
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-quEmerald to-quBlue bg-clip-text text-transparent">
-          Advanced Features, Built for Nigeria
+  <!-- Features Section -->
+  <section id="features" class="py-32 px-6 lg:px-12 gradient-subtle">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-20">
+        <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
+          Built for Nigerian Institutions
         </h2>
-        <p class="mt-3 text-white/70">Role-based access, JAMB/NYSC compliance, and low-bandwidth optimization.</p>
+        <p class="subhead text-lg md:text-xl max-w-2xl">
+          Comprehensive platform with JAMB, WAEC, NIN, and NYSC integration.
+        </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Six feature cards -->
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Academic Cap -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.5a12.083 12.083 0 01-6.16-10.922L12 14z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">Admissions (JAMB CAPS)</h3>
-          <p class="mt-2 text-white/70">Post-UTME automation with JAMB CAPS integration, e-docs, and e-signatures.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            JAMB Compliant
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">01</div>
+          <h3 class="text-xl font-semibold mb-3">Automated Admissions</h3>
+          <p class="subhead text-sm">
+            Online applications with JAMB CAPS integration, automated screening, and real-time status updates.
+          </p>
+        </div>
+
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">02</div>
+          <h3 class="text-xl font-semibold mb-3">Smart Exam Management</h3>
+          <p class="subhead text-sm">
+            Conflict-free scheduling, QR-based check-in, automated timetables, and venue optimization.
+          </p>
+        </div>
+
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">03</div>
+          <h3 class="text-xl font-semibold mb-3">NYSC Integration</h3>
+          <p class="subhead text-sm">
+            Automated clearance workflows, eligibility tracking, and seamless NYSC portal integration.
+          </p>
+        </div>
+
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">04</div>
+          <h3 class="text-xl font-semibold mb-3">Learning Management</h3>
+          <p class="subhead text-sm">
+            Complete LMS with lectures, quizzes, assignments, and Google Meet/Zoom integration.
+          </p>
+        </div>
+
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">05</div>
+          <h3 class="text-xl font-semibold mb-3">Integrated Payments</h3>
+          <p class="subhead text-sm">
+            Paystack, Flutterwave, Remita integration with automated receipts and refund workflows.
+          </p>
+        </div>
+
+        <div class="card p-8 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">06</div>
+          <h3 class="text-xl font-semibold mb-3">Mobile Access</h3>
+          <p class="subhead text-sm">
+            Native iOS and Android apps with offline support and low-bandwidth optimization.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules Section -->
+  <section id="modules" class="py-32 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-20">
+        <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
+          Comprehensive Modules
+        </h2>
+        <p class="subhead text-lg md:text-xl max-w-2xl">
+          18 integrated modules covering every aspect of institution operations.
+        </p>
+      </div>
+
+      <div class="card rounded-xl overflow-hidden">
+        <div id="module-display" class="p-10 md:p-12 lg:p-16 min-h-[300px]">
+          <div class="module-content">
+            <div class="text-sm font-semibold mb-6 accent">Module 01 of 18</div>
+            <h3 class="headline text-3xl md:text-4xl mb-6">Admissions & Onboarding</h3>
+            <p class="subhead text-lg max-w-3xl">
+              Online application portal with document upload and e-signatures. Automated screening with JAMB CAPS integration. Real-time status updates and admission list generation.
+            </p>
           </div>
         </div>
 
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Document Text -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v12a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">Docket Generation</h3>
-          <p class="mt-2 text-white/70">Self-generated booklets and clearance dockets—no queues, fewer errors.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            Zero Queues
-          </div>
-        </div>
-
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Shield Check -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">NYSC Integration</h3>
-          <p class="mt-2 text-white/70">Automated clearance and mobilization with audit-ready logs.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            NYSC Compliant
-          </div>
-        </div>
-
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Presentation Chart -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 4h18M4 8h16v10a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12l2 2 4-4" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">LMS</h3>
-          <p class="mt-2 text-white/70">Grading, announcements, materials—role-based access for HODs and faculty.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            Role-Based Access
-          </div>
-        </div>
-
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Calendar -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3M4 11h16M5 21h14a2 2 0 002-2V9a2 2 0 00-2-2H5A2 2 0 003 9v10a2 2 0 002 2z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">Timetable Scheduling</h3>
-          <p class="mt-2 text-white/70">Conflict-free scheduling with rooms, lecturers, and course constraints.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            Conflict-Free
-          </div>
-        </div>
-
-        <div class="p-6 rounded-xl glass-card card-mist feature-card opacity-0 group">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-quEmerald/20 to-quBlue/20 text-quEmerald flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-            <!-- Clipboard List -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5h6m-9 4h12M7 13h10m-8 4h6" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3h6a2 2 0 012 2v2H7V5a2 2 0 012-2z" />
-            </svg>
-          </div>
-          <h3 class="font-bold text-xl group-hover:text-quEmerald transition-colors duration-300">I.T./Projects Portal</h3>
-          <p class="mt-2 text-white/70">Track student I.T./projects, supervision, and NYSC readiness.</p>
-          <div class="mt-4 flex items-center text-quEmerald text-sm font-medium">
-            <span class="w-2 h-2 bg-quEmerald rounded-full mr-2"></span>
-            Project Tracking
+        <div class="border-t border-gray-200 dark:border-gray-900 p-6 flex items-center justify-between">
+          <div class="flex gap-2" id="module-dots"></div>
+          <div class="flex gap-2">
+            <button id="prev-module" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <button id="next-module" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Benefits & Testimonials -->
-  <section id="benefits" class="relative py-20" style="background: var(--bg-primary);">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <!-- Benefits with counters -->
-        <div>
-          <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-quEmerald to-quBlue bg-clip-text text-transparent">
-            Potential Impact
-          </h2>
-          <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div class="p-6 rounded-xl glass-card group hover:scale-105 transition-transform duration-300">
-              <div class="text-4xl font-extrabold text-quEmerald group-hover:scale-110 transition-transform duration-300">
-                <span class="counter" data-target="65">0</span>%
-            </div>
-              <div class="mt-2 text-white/70">Admin time savings</div>
-              <div class="mt-1 text-quEmerald font-semibold text-sm">~NGN 2.5M/year</div>
-              <div class="progress-bar mt-3">
-                <div class="progress-fill" style="width: 65%"></div>
-              </div>
-            </div>
-            <div class="p-6 rounded-xl glass-card group hover:scale-105 transition-transform duration-300">
-              <div class="text-4xl font-extrabold text-quEmerald group-hover:scale-110 transition-transform duration-300">
-                <span class="counter" data-target="90">0</span>%
-              </div>
-              <div class="mt-2 text-white/70">User adoption</div>
-              <div class="mt-1 text-quEmerald font-semibold text-sm">Expected uptake</div>
-              <div class="progress-bar mt-3">
-                <div class="progress-fill" style="width: 90%"></div>
-            </div>
-            </div>
-            <div class="p-6 rounded-xl glass-card group hover:scale-105 transition-transform duration-300">
-              <div class="text-4xl font-extrabold text-quEmerald group-hover:scale-110 transition-transform duration-300">
-                <span class="counter" data-target="100">0</span>%
-              </div>
-              <div class="mt-2 text-white/70">JAMB/NYSC compliance</div>
-              <div class="mt-1 text-quEmerald font-semibold text-sm">Fully compliant</div>
-              <div class="progress-bar mt-3">
-                <div class="progress-fill" style="width: 100%"></div>
-            </div>
-            </div>
-            <div class="p-6 rounded-xl glass-card group hover:scale-105 transition-transform duration-300">
-              <div class="text-4xl font-extrabold text-quEmerald group-hover:scale-110 transition-transform duration-300">
-                <span class="counter" data-target="40">0</span>%
-              </div>
-              <div class="mt-2 text-white/70">Student satisfaction increase</div>
-              <div class="mt-1 text-quEmerald font-semibold text-sm">Improved experience</div>
-              <div class="progress-bar mt-3">
-                <div class="progress-fill" style="width: 40%"></div>
-            </div>
-            </div>
-            <div class="p-6 rounded-xl glass-card group hover:scale-105 transition-transform duration-300">
-              <div class="text-4xl font-extrabold text-quEmerald group-hover:scale-110 transition-transform duration-300">
-                <span class="counter" data-target="80">0</span>%
-              </div>
-              <div class="mt-2 text-white/70">I.T./NYSC completion rate</div>
-              <div class="mt-1 text-quEmerald font-semibold text-sm">Higher success rate</div>
-              <div class="progress-bar mt-3">
-                <div class="progress-fill" style="width: 80%"></div>
-              </div>
-            </div>
-          </div>
+  <!-- Impact Section -->
+  <section id="impact" class="py-32 px-6 lg:px-12 gradient-subtle">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-20">
+        <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
+          Measurable Impact
+        </h2>
+        <p class="subhead text-lg md:text-xl max-w-2xl">
+          Real results that transform institutions and improve experiences.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="card p-10 rounded-xl text-center">
+          <div class="text-5xl font-semibold mb-3 counter" data-target="65">0</div>
+          <div class="subhead mb-1">Admin Time Saved</div>
+          <div class="text-sm accent font-medium">~₦2.5M annually</div>
         </div>
 
-        <!-- ROI Calculator -->
-        <div class="relative">
-          <h3 class="text-2xl md:text-3xl font-bold mb-6">ROI Calculator</h3>
-          <div class="glass-card rounded-xl p-6">
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-white/70 mb-2">Number of Students</label>
-                <input type="number" id="student-count" value="5000" min="100" max="50000" step="100" 
-                       class="w-full px-3 py-2 rounded-md border border-white/15 bg-white/5 text-white glow-input">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-white/70 mb-2">Current Admin Staff</label>
-                <input type="number" id="admin-staff" value="20" min="1" max="100" step="1" 
-                       class="w-full px-3 py-2 rounded-md border border-white/15 bg-white/5 text-white glow-input">
-              </div>
-              <div class="pt-4 border-t border-white/10">
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-white/70">Annual Savings</span>
-                  <span id="annual-savings" class="text-quEmerald font-bold text-xl">₦2,500,000</span>
-                </div>
-                <div class="flex justify-between items-center mb-2">
-                  <span class="text-white/70">ROI Percentage</span>
-                  <span id="roi-percentage" class="text-quEmerald font-bold text-xl">650%</span>
-                </div>
-                <div class="flex justify-between items-center">
-                  <span class="text-white/70">Payback Period</span>
-                  <span id="payback-period" class="text-quEmerald font-bold text-xl">1.8 months</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="card p-10 rounded-xl text-center">
+          <div class="text-5xl font-semibold mb-3 counter" data-target="90">0</div>
+          <div class="subhead mb-1">User Adoption</div>
+          <div class="text-sm accent font-medium">Within 18 months</div>
         </div>
 
-        <!-- Modules Breakdown carousel style -->
-        <div id="modules" class="relative mt-8">
-          <h3 class="text-2xl md:text-3xl font-bold mb-6">Modules Breakdown</h3>
-          <div class="mt-6 relative overflow-hidden rounded-xl glass-card group">
-            <div id="modules-slide" class="p-6 min-h-[160px]"></div>
-            <div class="absolute inset-0 pointer-events-none mist" style="opacity:.12"></div>
-            <button id="mod-prev" aria-label="Previous module" class="absolute left-2 bottom-2 top-auto md:top-1/2 md:bottom-auto md:-translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white opacity-0 group-hover:opacity-100 transition hover:scale-110">‹</button>
-            <button id="mod-next" aria-label="Next module" class="absolute right-2 bottom-2 top-auto md:top-1/2 md:bottom-auto md:-translate-y-1/2 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white opacity-0 group-hover:opacity-100 transition hover:scale-110">›</button>
-          </div>
+        <div class="card p-10 rounded-xl text-center">
+          <div class="text-5xl font-semibold mb-3 counter" data-target="40">0</div>
+          <div class="subhead mb-1">Student Satisfaction</div>
+          <div class="text-sm accent font-medium">Improvement rate</div>
         </div>
       </div>
-      <div class="mt-12 text-center">
-        <span class="coming-soon coming-soon--lg coming-cycle" aria-label="Coming Soon">
-          <span class="coming-dot"></span>
-          <span class="typing" style="--chars: 12">Coming Soon</span>
-        </span>
+
+      <!-- ROI Calculator -->
+      <div class="card rounded-xl p-10 md:p-12 max-w-3xl mx-auto">
+        <h3 class="headline text-3xl mb-8">Calculate Your ROI</h3>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium mb-3">Number of Students</label>
+            <input type="number" id="students" value="5000" min="100" max="50000" step="100"
+                   class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-3">Admin Staff Count</label>
+            <input type="number" id="staff" value="20" min="1" max="100" step="1"
+                   class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none">
+          </div>
+          <div class="divider my-8"></div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="subhead">Annual Savings</span>
+              <span id="savings" class="text-2xl font-semibold">₦2,500,000</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="subhead">ROI Percentage</span>
+              <span id="roi" class="text-2xl font-semibold">650%</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="subhead">Payback Period</span>
+              <span id="payback" class="text-2xl font-semibold">1.8 months</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Team -->
-  <section id="team" class="relative py-20" style="background: var(--bg-secondary);">
-    <div class="mist" aria-hidden="true" style="opacity:.15"></div>
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-quEmerald to-quBlue bg-clip-text text-transparent">
+  <!-- Team Section -->
+  <section id="team" class="py-32 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-20">
+        <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
           Leadership Team
         </h2>
-        <p class="mt-3 text-white/70">Meet the visionaries behind Quiro's transformation of Nigerian universities.</p>
+        <p class="subhead text-lg md:text-xl max-w-2xl">
+          Experienced leaders transforming African higher education.
+        </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="p-6 rounded-xl glass-card card-mist text-center group hover:scale-105 transition-transform duration-300">
-          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-quEmerald/20 to-quBlue/20 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-quEmerald">OS</span>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl">
+        <div class="card p-10 rounded-xl">
+          <div class="w-20 h-20 bg-black dark:bg-white rounded-full flex items-center justify-center mb-6">
+            <span class="text-2xl font-semibold text-white dark:text-black">OS</span>
           </div>
-          <h3 class="text-xl font-bold group-hover:text-quEmerald transition-colors duration-300">Oluwatoni Sobande</h3>
-          <p class="text-quEmerald font-semibold">Co-Founder & CEO</p>
-          <p class="mt-3 text-white/70 text-sm">Leading Quiro's mission to revolutionize university management across Nigeria with innovative technology solutions.</p>
-          <div class="mt-4 flex justify-center space-x-2">
-            <div class="w-2 h-2 bg-quEmerald rounded-full"></div>
-            <div class="w-2 h-2 bg-quBlue rounded-full"></div>
-            <div class="w-2 h-2 bg-quGold rounded-full"></div>
-          </div>
+          <h3 class="text-2xl font-semibold mb-1">Oluwatoni Sobande</h3>
+          <p class="accent font-medium mb-4">Co-Founder & CEO</p>
+          <p class="subhead text-sm">
+            Leading Quiro's mission to revolutionize institution management across Africa with innovative technology solutions.
+          </p>
         </div>
-        
-        <div class="p-6 rounded-xl glass-card card-mist text-center group hover:scale-105 transition-transform duration-300">
-          <div class="w-24 h-24 rounded-full bg-gradient-to-br from-quEmerald/20 to-quBlue/20 mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <span class="text-3xl font-bold text-quEmerald">MM</span>
+
+        <div class="card p-10 rounded-xl">
+          <div class="w-20 h-20 bg-black dark:bg-white rounded-full flex items-center justify-center mb-6">
+            <span class="text-2xl font-semibold text-white dark:text-black">MM</span>
           </div>
-          <h3 class="text-xl font-bold group-hover:text-quEmerald transition-colors duration-300">Mariam Muhammed</h3>
-          <p class="text-quEmerald font-semibold">Co-Founder & CHRO</p>
-          <p class="mt-3 text-white/70 text-sm">Driving human resources excellence and organizational development to support Quiro's growth and impact.</p>
-          <div class="mt-4 flex justify-center space-x-2">
-            <div class="w-2 h-2 bg-quEmerald rounded-full"></div>
-            <div class="w-2 h-2 bg-quBlue rounded-full"></div>
-            <div class="w-2 h-2 bg-quGold rounded-full"></div>
-          </div>
+          <h3 class="text-2xl font-semibold mb-1">Mariam Muhammed</h3>
+          <p class="accent font-medium mb-4">Co-Founder & CHRO</p>
+          <p class="subhead text-sm">
+            Driving human resources excellence and organizational development to support Quiro's growth and impact.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="cta" class="relative py-20" style="background: var(--bg-primary);">
-    <div class="mist" aria-hidden="true" style="opacity:.2"></div>
-    <div class="max-w-4xl mx-auto px-6 relative">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-quEmerald to-quBlue bg-clip-text text-transparent">
-          Request Info
+  <!-- Technology Section -->
+  <section class="py-32 px-6 lg:px-12 gradient-subtle">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-20">
+        <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
+          Modern Technology
         </h2>
-        <p class="mt-3 text-white/70">See how Quiro can streamline operations for your university.</p>
+        <p class="subhead text-lg md:text-xl max-w-2xl">
+          Built with cutting-edge technology for reliability, security, and scalability.
+        </p>
       </div>
 
-      <form id="info-form" class="glass-card rounded-xl p-8 space-y-6"
-            action="https://formspree.io/f/mzzaklgw" method="POST">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="space-y-2">
-            <label class="block text-sm font-medium text-white/70">Full Name</label>
-            <input class="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 glow-input text-white placeholder-white/50"
-                   type="text" name="name" placeholder="Enter your full name" required />
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-10 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">Security</div>
+          <h3 class="text-xl font-semibold mb-3">Secure & Compliant</h3>
+          <p class="subhead text-sm">
+            99.9% uptime, penetration testing, audit trails, and SSL/TLS encryption for all data.
+          </p>
         </div>
-          <div class="space-y-2">
-            <label class="block text-sm font-medium text-white/70">Email Address</label>
-            <input class="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 glow-input text-white placeholder-white/50"
-                   type="email" name="email" placeholder="Enter your email" required />
-          </div>
-          <div class="space-y-2 md:col-span-2">
-            <label class="block text-sm font-medium text-white/70">University Name</label>
-            <input class="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 glow-input text-white placeholder-white/50"
-                   type="text" name="university" placeholder="Enter your university name" required />
-          </div>
-          <div class="space-y-2 md:col-span-2">
-            <label class="block text-sm font-medium text-white/70">Tell us about your needs</label>
-            <textarea class="w-full rounded-md border border-white/15 bg-white/5 px-4 py-3 glow-input text-white placeholder-white/50 resize-none"
-                      name="message" rows="4" placeholder="e.g., admissions automation, LMS implementation, NYSC integration..."></textarea>
-          </div>
+
+        <div class="card p-10 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">Infrastructure</div>
+          <h3 class="text-xl font-semibold mb-3">Flexible Deployment</h3>
+          <p class="subhead text-sm">
+            Cloud, on-premise, or hybrid hosting with offline support for low-bandwidth areas.
+          </p>
         </div>
-        <div class="flex flex-col sm:flex-row gap-4 items-center justify-between pt-4">
-        <button id="submit-btn" type="submit"
-                  class="inline-flex items-center justify-center px-8 py-3 rounded-md bg-quEmerald text-black font-semibold hover:bg-emerald-500 transition hover:scale-105 hover:shadow-lg">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-            </svg>
-          Request Info
-        </button>
-          <div class="flex items-center text-sm text-white/60">
-            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-            </svg>
-            Secure & Confidential
-          </div>
+
+        <div class="card p-10 rounded-xl">
+          <div class="text-sm font-semibold mb-4 accent">Platform</div>
+          <h3 class="text-xl font-semibold mb-3">Cross-Platform</h3>
+          <p class="subhead text-sm">
+            Native iOS and Android apps built with Flutter for seamless mobile experience.
+          </p>
         </div>
-        <p id="form-success" class="hidden mt-4 p-4 rounded-md bg-quEmerald/10 border border-quEmerald/30 text-quEmerald text-center">
-          <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-          </svg>
-          Thanks! We'll get back to you shortly.
-        </p>
-      </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-32 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-12">
+          <h2 class="headline text-4xl md:text-5xl lg:text-6xl mb-4">
+            Get Started
+          </h2>
+          <p class="subhead text-lg md:text-xl">
+            Transform your institution with Quiro. Request information today.
+          </p>
+        </div>
+
+        <form id="contact-form" class="space-y-6" action="https://formspree.io/f/mzzaklgw" method="POST">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium mb-3">Full Name</label>
+              <input type="text" name="name" required
+                     class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none"
+                     placeholder="Your name">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-3">Email Address</label>
+              <input type="email" name="email" required
+                     class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none"
+                     placeholder="your@email.com">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-3">University Name</label>
+            <input type="text" name="university" required
+                   class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none"
+                   placeholder="Your university">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-3">Message</label>
+            <textarea name="message" rows="5"
+                      class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-black focus:border-emerald-500 focus:outline-none resize-none"
+                      placeholder="Tell us about your needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-full md:w-auto">
+            Send Message
+          </button>
+          <p id="success-msg" class="hidden mt-4 p-4 bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-200 dark:border-emerald-800 rounded-lg accent text-sm font-medium">
+            Message sent successfully. We'll be in touch soon.
+          </p>
+        </form>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="glass border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <div class="text-xl font-extrabold">
-          <span class="text-white">Qui</span><span class="text-quEmerald">ro</span>
+  <footer class="border-t border-gray-200 dark:border-gray-900 py-16 px-6 lg:px-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        <div>
+          <div class="text-xl font-semibold mb-4">
+            <span class="text-gray-900 dark:text-white">Qui</span><span class="text-emerald-500">ro</span>
+          </div>
+          <p class="subhead text-sm">
+            Transforming African institutions with modern management solutions. Taking first step in Nigeria.
+          </p>
         </div>
-        <p class="mt-3 text-white/60">Premium university management: fast, compliant, mobile-first.</p>
-      </div>
 
-      <div>
-        <div class="font-semibold text-white">Contact</div>
-        <div class="mt-3 space-y-4">
-          <div>
-            <div class="text-quEmerald font-medium text-sm mb-2">Oluwatoni Sobande (CEO)</div>
-            <ul class="space-y-2 text-white/70">
-              <li><a href="mailto:sobandeoluwatonie@gmail.com" class="hover:text-quEmerald transition flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-                sobandeoluwatonie@gmail.com
-              </a></li>
-              <li><a href="https://wa.me/2348120409164" target="_blank" rel="noopener" class="hover:text-quEmerald transition flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-                +234 812 040 9164
-              </a></li>
-        </ul>
-          </div>
-          <div>
-            <div class="text-quEmerald font-medium text-sm mb-2">Mariam Muhammed (CHRO)</div>
-            <ul class="space-y-2 text-white/70">
-              <li><a href="mailto:parksaetbyul87@gmail.com" class="hover:text-quEmerald transition flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
-                parksaetbyul87@gmail.com
-              </a></li>
-              <li><a href="https://wa.me/2348140329890" target="_blank" rel="noopener" class="hover:text-quEmerald transition flex items-center">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-                </svg>
-                +234 814 032 9890
-              </a></li>
-            </ul>
-          </div>
+        <div>
+          <h4 class="font-semibold mb-4 text-sm">Navigation</h4>
+          <ul class="space-y-3">
+            <li><a href="#features" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">Features</a></li>
+            <li><a href="#modules" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">Modules</a></li>
+            <li><a href="#impact" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">Impact</a></li>
+            <li><a href="#team" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">Team</a></li>
+            <li><a href="pricing.html" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">Pricing</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4 text-sm">Contact CEO</h4>
+          <ul class="space-y-3">
+            <li><a href="mailto:sobandeoluwatonie@gmail.com" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">sobandeoluwatonie@gmail.com</a></li>
+            <li><a href="https://wa.me/2348120409164" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">+234 812 040 9164</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-semibold mb-4 text-sm">Contact CHRO</h4>
+          <ul class="space-y-3">
+            <li><a href="mailto:parksaetbyul87@gmail.com" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">muhammedmari2005@gmail.com</a></li>
+            <li><a href="https://wa.me/2348140329890" class="subhead text-sm hover:text-gray-900 dark:hover:text-gray-100">+234 814 032 9890</a></li>
+          </ul>
         </div>
       </div>
 
-      <div>
-        <div class="font-semibold text-white">Navigate</div>
-        <ul class="mt-3 space-y-2 text-white/70">
-          <li><a href="#hero" class="hover:text-quEmerald transition">About</a></li>
-          <li><a href="#features" class="hover:text-quEmerald transition">Features</a></li>
-          <li><a href="#benefits" class="hover:text-quEmerald transition">Benefits</a></li>
-          <li><a href="#team" class="hover:text-quEmerald transition">Team</a></li>
-          <li><a href="pricing.html" class="hover:text-quEmerald transition">Pricing</a></li>
-        </ul>
-      </div>
+      <div class="divider mb-8"></div>
 
-      <div>
-        <div class="font-semibold text-white">Quick Signup</div>
-        <form id="mini-form" action="https://formspree.io/f/mzzaklgw" method="POST" class="mt-3 space-y-3">
-          <input class="w-full rounded-md border border-white/15 bg-white/5 px-3 py-2 glow-input text-white placeholder-white/50"
-                 type="email" name="email" placeholder="Email Address" required />
-          <button type="submit" class="w-full px-4 py-2 rounded-md bg-quEmerald hover:bg-emerald-500 transition hover:scale-105 text-black font-semibold">
-            Join Waitlist
-          </button>
-        </form>
-        <p class="mt-2 text-xs text-white/50">Get notified when we launch</p>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="subhead text-sm">© <span id="year"></span> Quiro. All rights reserved.</p>
+        <p class="subhead text-sm">Built for African Institutions — Taking First Step in Nigeria</p>
       </div>
-    </div>
-    <div class="border-t border-white/10 py-4 text-center text-white/50 text-sm">
-      © <span id="year"></span> Quiro. All rights reserved. | Built for Nigerian Universities
     </div>
   </footer>
 
   <script>
-
-    // Year
+    // Set year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ROI Calculator
-    function updateROI() {
-      const studentCount = parseInt(document.getElementById('student-count').value) || 5000;
-      const adminStaff = parseInt(document.getElementById('admin-staff').value) || 20;
-      
-      // More realistic calculations based on actual university operations
-      // Base savings: ₦200 per student per year (reduced paperwork, faster processing)
-      const baseSavings = studentCount * 200;
-      
-      // Staff efficiency savings: 65% time reduction for admin staff
-      // Average admin staff salary: ₦50,000/month = ₦600,000/year
-      // 65% time savings = ₦390,000 per staff per year
-      const staffSavings = adminStaff * 390000;
-      
-      const totalSavings = baseSavings + staffSavings;
-      
-      // Implementation cost: ₦2M for setup, training, and first year
-      const implementationCost = 2000000;
-      
-      // Calculate ROI percentage
-      const roiPercentage = Math.round(((totalSavings - implementationCost) / implementationCost) * 100);
-      
-      // Calculate payback period in months
-      const paybackPeriod = Math.round((implementationCost / totalSavings) * 12 * 10) / 10;
-      
-      // Update display
-      document.getElementById('annual-savings').textContent = `₦${totalSavings.toLocaleString()}`;
-      document.getElementById('roi-percentage').textContent = `${roiPercentage}%`;
-      document.getElementById('payback-period').textContent = `${paybackPeriod} months`;
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
     }
-    
-    // Add event listeners for ROI calculator
-    document.getElementById('student-count').addEventListener('input', updateROI);
-    document.getElementById('admin-staff').addEventListener('input', updateROI);
 
-    // Smooth scroll for anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        const target = href && href !== '#' ? document.querySelector(href) : null;
-        if (target) {
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    setTheme(savedTheme || systemTheme);
+
+    themeToggle?.addEventListener('click', () => {
+      setTheme(html.classList.contains('dark') ? 'light' : 'dark');
+    });
+
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
           e.preventDefault();
-          window.scrollTo({ top: target.offsetTop - 64, behavior: 'smooth' });
-          // close mobile menu if open
-          const mm = document.getElementById('mobile-menu');
-          if (mm && !mm.classList.contains('hidden')) {
-            mm.classList.add('hidden');
-            const btn = document.getElementById('mobile-menu-btn');
-            if (btn) btn.setAttribute('aria-expanded', 'false');
+          const target = document.querySelector(href);
+          if (target) {
+            const navHeight = 64;
+            const targetPosition = target.offsetTop - navHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            mobileMenu.classList.add('hidden');
           }
         }
       });
     });
 
-    // GSAP intro animations
-    window.addEventListener('load', () => {
-      const t1 = gsap.timeline({ defaults: { ease: 'power2.out' } });
-      t1.to('#hero-title', { opacity: 1, y: -8, duration: .8 })
-        .to('#hero-sub', { opacity: 1, y: -6, duration: .7 }, '-=.3')
-        .to('#roi-preview', { opacity: 1, y: -4, duration: .6 }, '-=.2')
-        .to('#hero-cta', { opacity: 1, y: -4, duration: .6 }, '-=.3')
-        .to('#hero-note', { opacity: 1, duration: .6 }, '-=.4')
-        .to('#hero-coming', { opacity: 1, y: -2, duration: .6 }, '-=.2');
-      
-      // Mobile menu functionality
-      const menuBtn = document.getElementById('mobile-menu-btn');
-      const menu = document.getElementById('mobile-menu');
-      if (menuBtn && menu) {
-        menuBtn.addEventListener('click', () => {
-          const open = !menu.classList.contains('hidden');
-          if (open) {
-            menu.classList.add('hidden');
-            menuBtn.setAttribute('aria-expanded', 'false');
-          } else {
-            menu.classList.remove('hidden');
-            menuBtn.setAttribute('aria-expanded', 'true');
-          }
-        });
-      }
-      
-      // Initialize ROI calculator
-      updateROI();
-    });
-
-    // Particles.js in hero (subtle mists)
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.particlesJS) {
-        particlesJS('particles-hero', {
-          particles: {
-            number: { value: 30, density: { enable: true, value_area: 900 } },
-            color: { value: ['#10B981', '#1E3A8A'] },
-            shape: { type: 'circle' },
-            opacity: { value: 0.15, random: true },
-            size: { value: 3, random: true },
-            line_linked: { enable: false },
-            move: { enable: true, speed: 0.6, direction: 'none', out_mode: 'out' }
-          },
-          interactivity: { events: { onhover: { enable: false }, onclick: { enable: false }, resize: true } },
-          retina_detect: true
-        });
-      }
-    });
-
-    // Intersection Observer: feature cards fade in with color shift
-    const featureCards = document.querySelectorAll('.feature-card');
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          gsap.to(entry.target, { opacity: 1, y: -8, duration: .6, stagger: .05 });
-          entry.target.querySelector('h3') && gsap.to(entry.target.querySelector('h3'), { color: '#10B981', duration: .8 });
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: .15 });
-    featureCards.forEach(card => obs.observe(card));
-
-    // Counters on scroll
+    // Counter animation
     const counters = document.querySelectorAll('.counter');
-    let countersActivated = false;
-    const counterSection = document.getElementById('benefits');
-    const counterObs = new IntersectionObserver(entries => {
+    const animateCounter = (counter) => {
+      const target = parseInt(counter.dataset.target);
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.textContent = Math.floor(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target;
+        }
+      };
+      updateCounter();
+    };
+
+    const observerOptions = { threshold: 0.5 };
+    const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !countersActivated) {
-          countersActivated = true;
-          counters.forEach(el => {
-            const target = parseInt(el.dataset.target, 10) || 0;
-            const obj = { val: 0 };
-            gsap.to(obj, {
-              val: target, duration: 1.2, ease: 'power1.out',
-              onUpdate: () => { el.textContent = Math.round(obj.val); }
-            });
-          });
-          counterObs.disconnect();
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          animateCounter(entry.target);
+          entry.target.dataset.animated = 'true';
         }
       });
-    }, { threshold: .25 });
-    counterObs.observe(counterSection);
+    }, observerOptions);
 
-    // Modules carousel (one at a time)
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // Modules carousel
     const modules = [
-      { t: 'Admissions & Onboarding', s: 'Online applications with JAMB CAPS sync and live status updates.' },
-      { t: 'Course Management', s: 'Catalogs, prerequisites, timetables, and materials in one place.' },
-      { t: 'Course Registration & Allocation', s: 'Self-service enrolment, HOD approvals, and exportable reports.' },
-      { t: 'Examination Management', s: 'Clash-free timetables, secure check-in, scanning, venues.' },
-      { t: 'Computer-Based Testing (CBT)', s: 'Question banks, anti-cheat tools, auto-marking with analytics.' },
-      { t: 'Result Management', s: 'Automated grading, audit trails, transcripts and statements.' },
-      { t: 'Learning Management System (LMS)', s: 'Live/recorded classes, quizzes, Zoom/Meet integrations.' },
-      { t: 'Industrial Training & Projects', s: 'I.T./project portals with templates, scheduling, feedback.' },
-      { t: 'Student Registration & Profiles', s: 'Biometric/KYC, medical, custom fields, docket generation.' },
-      { t: 'Transcript & Clearance', s: 'E-transcripts, departmental clearance, NYSC eligibility tracking.' },
-      { t: 'Staff Management', s: 'Profiles, leave, appraisals, and teaching load management.' },
-      { t: 'Fees & Finance', s: 'Payments via Paystack/Flutterwave/Remita, receipts, refunds.' },
-      { t: 'Hostel & Accommodation', s: 'Room catalogs, booking engine, allocations, check-in logs.' },
-      { t: 'Library Management', s: 'Books, e-resources, borrowing history, and dues tracking.' },
-      { t: 'Student ID & Verification', s: 'QR/serial IDs and verification API for banks/NYSC.' },
-      { t: 'Notifications & Messaging', s: 'SMS/email, announcements, forums, controlled two-way chats.' },
-      { t: 'Alumni Portal', s: 'Profiles, transcript requests, donations, event engagement.' },
-      { t: 'Reporting & Analytics', s: 'Dashboards and exportable insights across academics and finance.' },
+      { title: 'Admissions & Onboarding', desc: 'Online application portal with document upload and e-signatures. Automated screening with JAMB CAPS integration. Real-time status updates and admission list generation.' },
+      { title: 'Course Management', desc: 'Dynamic course catalog with department/lecturer allocation, prerequisite and credit control logic, calendar-linked schedules with automated reminders.' },
+      { title: 'Course Registration & Allocation', desc: 'Self-service student enrollment with real-time prerequisite checks, HOD approval workflows, and exportable reports in Excel/PDF.' },
+      { title: 'Examination Management', desc: 'Smart scheduling to optimize venues and avoid clashes. QR/serial-based ID scanning for secure check-in. Automated generation of exam timetables.' },
+      { title: 'Computer-Based Testing', desc: 'Question bank with MCQ, essay, and timer features. Anti-cheating tools including question shuffling and authentication. Auto-graded results with analytics.' },
+      { title: 'Result Management', desc: 'Automated grade computation with 24-hour publication delay. Comprehensive audit trails for transparency. Transcript and result statement generation.' },
+      { title: 'Learning Management System', desc: 'Live and recorded lectures, quizzes, and assignments. Gradebook with Google Meet/Zoom integration. Complete submission and evaluation portal.' },
+      { title: 'Industrial Training & Projects', desc: 'Centralized portal for submitting I.T./internship reports with templates. Project management tools for final-year projects. Presentation scheduling and feedback system.' },
+      { title: 'Student Registration & Profiles', desc: 'Semester registration with biometric verification and KYC compliance. Medical and emergency contact storage. Automated docket generation.' },
+      { title: 'Transcript & Clearance', desc: 'E-transcript request portal with automated workflows. Departmental clearance and certificate status tracking. NYSC eligibility verification.' },
+      { title: 'Staff Management', desc: 'Comprehensive profiles for academic and non-academic staff. Leave tracking, performance appraisals, and teaching load management.' },
+      { title: 'Fees & Finance', desc: 'Faculty and level-specific fee schedules. Payment tracking with Paystack, Flutterwave, and Remita integration. Automated receipts and refund workflows.' },
+      { title: 'Hostel & Accommodation', desc: 'Complete room catalog with booking engine and capacity tracking. Payment-linked allocation system and detailed check-in logs.' },
+      { title: 'Library Management', desc: 'Comprehensive book and digital resource catalog including eBooks and PDFs. Borrowing history tracking and automated dues management.' },
+      { title: 'Student ID & Verification', desc: 'Digital IDs with QR/serial codes for exams, libraries, hostels, and NYSC verification. API for banks and external entities.' },
+      { title: 'Notifications & Messaging', desc: 'SMS/email alerts via Twilio, Termii, or Sendinblue. Two-way messaging system with appropriate restrictions. Announcement system for groups.' },
+      { title: 'Alumni Portal', desc: 'Alumni profile updates and transcript requests. Donation tracking and campaign management. Event management and engagement tools.' },
+      { title: 'Reporting & Analytics', desc: 'Comprehensive dashboards for academic, financial, and user activity insights. Customizable PDF/Excel reports with advanced filtering.' }
     ];
-    const modSlide = document.getElementById('modules-slide');
-    const modPrev = document.getElementById('mod-prev');
-    const modNext = document.getElementById('mod-next');
-    let mIdx = 0, mInt;
-    function renderModule(i) {
-      if (!modSlide) return;
-      modSlide.classList.add('fade-exit');
+
+    let currentModule = 0;
+    const moduleDisplay = document.getElementById('module-display');
+    const moduleDots = document.getElementById('module-dots');
+    const prevBtn = document.getElementById('prev-module');
+    const nextBtn = document.getElementById('next-module');
+
+    function renderModule(index) {
+      const module = modules[index];
+      const content = moduleDisplay.querySelector('.module-content');
+      
+      content.classList.add('hiding');
+      
       setTimeout(() => {
-        modSlide.innerHTML = `
-          <div class="bg-white/5 rounded-xl p-2">
-            <div class="p-4 rounded-lg" style="background: linear-gradient(90deg, rgba(16,185,129,.15), rgba(30,58,138,.15));">
-              <div class="text-lg font-semibold">${modules[i].t}</div>
-              <div class="mt-2 text-sm text-white/70">${modules[i].s}</div>
-            </div>
-          </div>`;
-        modSlide.className = '';
-        modSlide.classList.add('fade-enter');
-        setTimeout(() => { modSlide.classList.add('fade-enter-active'); }, 10);
-        // no dots; navigation via arrows
+        content.innerHTML = `
+          <div class="text-sm font-semibold mb-6 accent">Module ${String(index + 1).padStart(2, '0')} of ${modules.length}</div>
+          <h3 class="headline text-3xl md:text-4xl mb-6">${module.title}</h3>
+          <p class="subhead text-lg max-w-3xl">${module.desc}</p>
+        `;
+        content.classList.remove('hiding');
       }, 150);
     }
-    function startModules() {
-      renderModule(mIdx);
-      mInt = setInterval(() => { mIdx = (mIdx + 1) % modules.length; renderModule(mIdx); }, 3000);
-    }
-    function pauseModules(){ clearInterval(mInt); }
-    const modulesEl = document.getElementById('modules');
-    if (modulesEl) {
-      modulesEl.addEventListener('mouseenter', pauseModules);
-      modulesEl.addEventListener('mouseleave', startModules);
-      if (modPrev) modPrev.addEventListener('click', () => { pauseModules(); mIdx = (mIdx - 1 + modules.length) % modules.length; renderModule(mIdx); });
-      if (modNext) modNext.addEventListener('click', () => { pauseModules(); mIdx = (mIdx + 1) % modules.length; renderModule(mIdx); });
-      startModules();
-    }
 
-    // Enhanced form submission with better UX
-    const form = document.getElementById('info-form');
-    const successMsg = document.getElementById('form-success');
-    const submitBtn = document.getElementById('submit-btn');
-    
-    if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      submitBtn.disabled = true;
-        submitBtn.innerHTML = `
-          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-          </svg>
-          Sending...
-        `;
-        
-      try {
-        const formData = new FormData(form);
-          const res = await fetch(form.action, { 
-            method: 'POST', 
-            body: formData, 
-            headers: { 'Accept': 'application/json' } 
-          });
-          
-        if (res.ok) {
-            gsap.to(successMsg, { 
-              display: 'block', 
-              opacity: 1, 
-              duration: 0.6,
-              ease: 'power2.out'
-            });
-          form.reset();
-            // Scroll to success message
-            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            throw new Error('Submission failed');
-        }
-        } catch (error) {
-          console.error('Form submission error:', error);
-          alert('Submission failed. Please try again or contact us directly.');
-      } finally {
-        submitBtn.disabled = false;
-          submitBtn.innerHTML = `
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-            </svg>
-            Request Info
-          `;
-        }
-      });
-    }
-
-    // Enhanced mini-form submission
-    const miniForm = document.getElementById('mini-form');
-    if (miniForm) {
-    miniForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const submitBtn = miniForm.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Joining...';
-        
-        try {
-          const formData = new FormData(miniForm);
-          const res = await fetch(miniForm.action, { 
-            method: 'POST', 
-            body: formData, 
-            headers: { 'Accept': 'application/json' } 
-          });
-          
-          if (res.ok) {
-            submitBtn.textContent = 'Joined!';
-            submitBtn.classList.add('bg-quEmerald');
-            miniForm.reset();
-            setTimeout(() => {
-              submitBtn.textContent = originalText;
-              submitBtn.classList.remove('bg-quEmerald');
-            }, 2000);
-          } else {
-            throw new Error('Submission failed');
-          }
-        } catch (error) {
-          console.error('Mini-form submission error:', error);
-          submitBtn.textContent = 'Try Again';
-          setTimeout(() => {
-            submitBtn.textContent = originalText;
-          }, 2000);
-        } finally {
-          submitBtn.disabled = false;
-        }
-      });
-    }
-
-    // Mobile swipe gestures for modules carousel
-    let startX = 0;
-    let startY = 0;
-    const modulesContainer = document.getElementById('modules-slide');
-    
-    if (modulesContainer) {
-      modulesContainer.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        startY = e.touches[0].clientY;
-      });
+    function renderDots() {
+      const dotsToShow = Math.min(6, modules.length);
+      const startIndex = Math.max(0, Math.min(currentModule - 2, modules.length - dotsToShow));
       
-      modulesContainer.addEventListener('touchend', (e) => {
-        if (!startX || !startY) return;
-        
-        const endX = e.changedTouches[0].clientX;
-        const endY = e.changedTouches[0].clientY;
-        
-        const diffX = startX - endX;
-        const diffY = startY - endY;
-        
-        // Only trigger if horizontal swipe is more significant than vertical
-        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-          if (diffX > 0) {
-            // Swipe left - next module
-            const nextBtn = document.getElementById('mod-next');
-            if (nextBtn) nextBtn.click();
-          } else {
-            // Swipe right - previous module
-            const prevBtn = document.getElementById('mod-prev');
-            if (prevBtn) prevBtn.click();
-          }
-        }
-        
-        startX = 0;
-        startY = 0;
-      });
+      moduleDots.innerHTML = '';
+      for (let i = startIndex; i < startIndex + dotsToShow; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2 h-2 rounded-full transition-all ${i === currentModule ? 'bg-emerald-500 w-6' : 'bg-gray-300 dark:bg-gray-700'}`;
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => {
+          currentModule = i;
+          renderModule(currentModule);
+          renderDots();
+        });
+        moduleDots.appendChild(dot);
+      }
     }
 
-    // Lazy loading for images
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.classList.remove('skeleton');
-          observer.unobserve(img);
-        }
-      });
+    prevBtn?.addEventListener('click', () => {
+      currentModule = (currentModule - 1 + modules.length) % modules.length;
+      renderModule(currentModule);
+      renderDots();
     });
-    
-    images.forEach(img => imageObserver.observe(img));
 
-    // Performance optimization: Reduce particles on mobile
-    if (window.innerWidth < 768 && window.particlesJS) {
-      particlesJS('particles-hero', {
-        particles: {
-          number: { value: 15, density: { enable: true, value_area: 900 } },
-          color: { value: ['#10B981', '#1E3A8A'] },
-          shape: { type: 'circle' },
-          opacity: { value: 0.1, random: true },
-          size: { value: 2, random: true },
-          line_linked: { enable: false },
-          move: { enable: true, speed: 0.3, direction: 'none', out_mode: 'out' }
-        },
-        interactivity: { events: { onhover: { enable: false }, onclick: { enable: false }, resize: true } },
-        retina_detect: true
-      });
+    nextBtn?.addEventListener('click', () => {
+      currentModule = (currentModule + 1) % modules.length;
+      renderModule(currentModule);
+      renderDots();
+    });
+
+    renderModule(currentModule);
+    renderDots();
+
+    // Auto-rotate modules
+    let moduleInterval = setInterval(() => {
+      currentModule = (currentModule + 1) % modules.length;
+      renderModule(currentModule);
+      renderDots();
+    }, 6000);
+
+    // Pause on hover
+    moduleDisplay?.addEventListener('mouseenter', () => clearInterval(moduleInterval));
+    moduleDisplay?.addEventListener('mouseleave', () => {
+      moduleInterval = setInterval(() => {
+        currentModule = (currentModule + 1) % modules.length;
+        renderModule(currentModule);
+        renderDots();
+      }, 6000);
+    });
+
+    // ROI Calculator
+    const studentsInput = document.getElementById('students');
+    const staffInput = document.getElementById('staff');
+    const savingsEl = document.getElementById('savings');
+    const roiEl = document.getElementById('roi');
+    const paybackEl = document.getElementById('payback');
+
+    function calculateROI() {
+      const students = parseInt(studentsInput.value) || 5000;
+      const staff = parseInt(staffInput.value) || 20;
+
+      const baseSavings = students * 200;
+      const staffSavings = staff * 390000;
+      const totalSavings = baseSavings + staffSavings;
+      const implementationCost = 2000000;
+      const roiPercentage = Math.round(((totalSavings - implementationCost) / implementationCost) * 100);
+      const paybackPeriod = ((implementationCost / totalSavings) * 12).toFixed(1);
+
+      savingsEl.textContent = `₦${totalSavings.toLocaleString()}`;
+      roiEl.textContent = `${roiPercentage}%`;
+      paybackEl.textContent = `${paybackPeriod} months`;
     }
+
+    studentsInput?.addEventListener('input', calculateROI);
+    staffInput?.addEventListener('input', calculateROI);
+    calculateROI();
+
+    // Form submission
+    const contactForm = document.getElementById('contact-form');
+    const successMsg = document.getElementById('success-msg');
+
+    contactForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = contactForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(contactForm);
+        const res = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          successMsg.classList.remove('hidden');
+          contactForm.reset();
+          setTimeout(() => successMsg.classList.add('hidden'), 5000);
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (error) {
+        alert('Failed to send. Please try again or contact us directly.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+      }
+    });
   </script>
 </body>
 </html>
-
